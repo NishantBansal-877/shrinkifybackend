@@ -10,7 +10,7 @@ import { createAccessToken, verifyRefreshToken } from "./src/utils/jwt.js";
 const app = express();
 
 const allowedOrigins = [
-  "127.0.0.1:3000",
+  "http://127.0.0.1:3000",
   "https://shrinkifyfrontend.vercel.app",
   "https://shrinkifyfrontend.netlify.app",
   "https://shrinkifyfrontend.vercel.app/",
