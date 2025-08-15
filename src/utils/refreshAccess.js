@@ -4,9 +4,9 @@ export async function refreshAccess(req, res) {
   const payload = verifyRefreshToken(req);
 
   if (!payload) {
-    return res.send({ message: "not valid refreshtoken" });
+    return res.status(404).json({ message: "not valid refreshtoken" });
   }
   payload._id = payload.sub;
   createAccessToken(payload, res);
-  res.send({ message: "refresh access done", fullName: payload.fullName, email: payload.email });
+  res.status(200).json({ message: "refresh access done", fullName: payload.fullName, email: payload.email });
 }
