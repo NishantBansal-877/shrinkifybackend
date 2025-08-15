@@ -36,11 +36,6 @@ export async function sendOtpToEmail(userEmail) {
 
   try {
     await mailSender(userEmail, emailTitle, emailBody);
-    console.log(`OTP ${otp} sent to ${userEmail}`);
-    // Otp.create({
-    //   email: userEmail,
-    //   otp: String(otp),
-    // });
     setTimeout(
       () => clearOtp(userEmail, otp),
       process.env.OTP_TIMEOUT * 60 * 1000
