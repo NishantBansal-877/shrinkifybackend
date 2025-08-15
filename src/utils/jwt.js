@@ -22,7 +22,7 @@ export function createRefreshToken(user, res) {
 
   res.cookie("refreshtoken", token, {
     httpOnly: true,
-    secure: true, // ✅ Required for HTTPS
+    secure: true, 
     sameSite: "None", // ✅ Allows cross-site cookies
     maxAge: 7 * 24 * 60 * 60 * 1000,
   });
