@@ -8,7 +8,7 @@ router.route("/").post(compressImage);
 
 async function compressImage(req, res) {
   if (!verifyAccessToken(req)) {
-    res.end( "not valid access" );
+    res.json({message:"not valid access"});
   }
 
   const { data, quality } = req.body;
@@ -47,6 +47,7 @@ async function compressImage(req, res) {
 
     // Send all images as JSON
     res.json({
+      message:"send compressed images",
       success: true,
       images: processedImages,
     });
