@@ -2,7 +2,7 @@ import { createAccessToken, verifyRefreshToken } from "./jwt.js";
 
 export async function refreshAccess(req, res) {
   const payload = verifyRefreshToken(req);
-
+console.log(payload);
   if (!payload) {
     return res.status(404).json({ message: "not valid refreshtoken" });
   }
