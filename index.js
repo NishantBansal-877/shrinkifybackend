@@ -54,7 +54,7 @@ app.get("/refresh", (req, res) => {
   });
 });
 
-app.use("/logout", logout);
+app.get("/logout", logout);
 app.use("/auth", authRouter);
 app.use("/shrink", shrinkRouter);
 
