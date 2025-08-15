@@ -31,7 +31,7 @@ export function createRefreshToken(user, res) {
 // Create access token
 export function createAccessToken(user, res) {
   const payload = { sub: user._id, email: user.email, role: user.role };
-  const privateKey = process.env.PUBLIC_KEY;
+  const privateKey = process.env.PRIVATE_KEY;
 
   const token = jwt.sign(payload, privateKey, {
     algorithm: "RS256",
@@ -51,7 +51,7 @@ export function createAccessToken(user, res) {
 
 // Verify refresh token
 export function verifyRefreshToken(req) {
-  const publicKey = fs.readFileSync("./keys/public.key");
+  const publicKey = process.env.PUBLIC_KEY;
   const token = req.cookies.refreshtoken;
   if (!token) return null;
 
@@ -74,7 +74,7 @@ export function verifyRefreshToken(req) {
 
 // Verify access token
 export function verifyAccessToken(req) {
-  const publicKey = fs.readFileSync("./keys/public.key");
+  const publicKey = process.env.PUBLIC_KEY;
   const token = req.cookies.accesstoken;
   if (!token) return null;
 
