@@ -111,11 +111,13 @@ export async function forgetPassword(req, res) {
   if (!isEmail(email)) {
     return res.status(404).json({ message: "Invalid email format" });
   }
+   if (password.length < 8) {
+     return res.status(404).json({ message:"Password must be at least 8 characters" });
+      }
 
   let user = await UserData.findOne({ email: email });
   if (!user) {
-    res.send({ message: "user not found" });
-    res.end();
+    return res.status(404).json({ message: "user not found" });
   }
 
   const otp = await sendOtpToEmail(email);
