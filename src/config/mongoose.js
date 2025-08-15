@@ -1,10 +1,12 @@
-import dotenv from "dotenv";
 import mongoose from "mongoose";
 import isEmail from "validator/lib/isEmail.js";
+import dotenv from "dotenv";
+dotenv.config({ path: "./config.env" });
 
-dotenv.config({ path: "../config.env" });
-
-const DB = process.env.DATABASE.replace("<PASSWORD>", process.env.DATABASE_PASSWORD);
+const DB = process.env.DATABASE.replace(
+  "<PASSWORD>",
+  process.env.DATABASE_PASSWORD
+);
 
 await mongoose.connect(DB);
 console.log("DB connected");

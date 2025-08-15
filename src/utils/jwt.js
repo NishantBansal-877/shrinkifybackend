@@ -10,7 +10,7 @@ export function createRefreshToken(user, res) {
     role: user.role,
     tokenVersion: user.tokenVersion,
   };
-  const privateKey = fs.readFileSync("./keys/private.key");
+  const privateKey = process.env.PRIVATE_KEY;
 
   const token = jwt.sign(payload, privateKey, {
     algorithm: "RS256",
@@ -31,7 +31,7 @@ export function createRefreshToken(user, res) {
 // Create access token
 export function createAccessToken(user, res) {
   const payload = { sub: user._id, email: user.email, role: user.role };
-  const privateKey = fs.readFileSync("./keys/private.key");
+  const privateKey = process.env.PUBLIC_KEY;
 
   const token = jwt.sign(payload, privateKey, {
     algorithm: "RS256",

@@ -1,7 +1,6 @@
 import otpGenerator from "otp-generator";
 import nodemailer from "nodemailer";
 import { TempUser } from "../config/mongoose.js";
-// import { Otp } from "../config/mongoose.js";
 
 const mailSender = async (email, title, body) => {
   try {
@@ -42,7 +41,10 @@ export async function sendOtpToEmail(userEmail) {
     //   email: userEmail,
     //   otp: String(otp),
     // });
-    setTimeout(() => clearOtp(userEmail, otp), process.env.OTP_TIMEOUT * 60 * 1000);
+    setTimeout(
+      () => clearOtp(userEmail, otp),
+      process.env.OTP_TIMEOUT * 60 * 1000
+    );
     return otp;
   } catch (error) {
     console.error("Failed to send OTP email:", error);
