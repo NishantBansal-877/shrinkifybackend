@@ -11,6 +11,6 @@ export function logout(req, res) {
     sameSite: "None",
     maxAge: 0,
   });
-  res.end({message:"logout"});
+  res.end({message:"logged out"});
 }
 export default logout;
