@@ -1,4 +1,4 @@
-import { createAccessToken, verifyRefreshToken } from "./jwt.js";
+import { createAccessToken, createRefreshToken,verifyRefreshToken } from "./jwt.js";
 
 export async function refreshAccess(req, res) {
   const payload = verifyRefreshToken(req);
@@ -12,7 +12,7 @@ export async function refreshAccess(req, res) {
   if (!user) {
     return res.status(404).json({ message: "user not found" });
   }
-
+  createRefreshToken(user,res);
   createAccessToken(user, res);
   res.status(200).json({
     message: "refresh access done",
